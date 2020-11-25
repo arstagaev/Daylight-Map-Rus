@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+
+	<canvas id="canvas1" width="600" height="300" style="background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Federal_cities_of_Russia.svg/1000px-Federal_cities_of_Russia.svg.png');
+	background-size:100% 100%;
+	background-repeat:no-repeat;
+	border: 3px solid black;">
+	Random Canvas
+	</canvas>
+	
+	
+	<script type="text/javascript" src ="./daylightMap.js"></script>
+	<script type="text/javascript">
+		
+		offset = 15*60; //this map is about 15 minutes off.  Accounted for in offset variable.
+		
+		//fast forwarding through time
+		var ctr = 0;
+		var updateInterval = 60; //60 seconds per update
+		setInterval( function(){
+			var curDate = new Date();
+			var updateAmount = 1000*updateInterval*ctr;
+			var displayDate = new Date(curDate.getTime() + updateAmount);
+			daylightMap(document.getElementById("canvas1"), displayDate, offset);
+			ctr++;
+		},
+		100);
+		
+	</script>
+</body>
